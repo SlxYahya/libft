@@ -13,7 +13,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*courant;
+	t_list	*current;
 
 	if (lst == NULL || del == NULL)
 		return ;
@@ -21,10 +21,10 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		return ;
 	while (*lst)
 	{
-		courant = *lst;
+		current = *lst;
 		*lst = (*lst)->next;
-		del(courant->content);
-		free(courant);
+		del(current->content);
+		free(current);
 	}
 	*lst = NULL;
 }

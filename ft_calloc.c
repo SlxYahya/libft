@@ -11,26 +11,14 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static void	ft_bzero(void *s, size_t l)
-{
-	size_t			i;
-	unsigned char	*t;
-
-	i = 0;
-	if (s == NULL)
-		return ;
-	t = (unsigned char *)s;
-	while (i < l)
-	{
-		t[i] = 0;
-		i++;
-	}
-}
-
 void	*ft_calloc(size_t amount, size_t size)
 {
 	void	*ptr;
+	size_t	size_max;
 
+	size_max = (size_t)(-1);
+	if (amount != 0 && size > size_max / amount)
+		return (NULL);
 	ptr = malloc(amount * size);
 	if (ptr == NULL)
 		return (NULL);

@@ -31,7 +31,7 @@ static int	ft_countsep(char const *s, char c)
 	return (j);
 }
 
-static char	**ft_null(int i, char **str)
+static char	**ft_failure_splt(int i, char **str)
 {
 	while (i > 0)
 		free(str[--i]);
@@ -39,7 +39,7 @@ static char	**ft_null(int i, char **str)
 	return (NULL);
 }
 
-static int	ft_word(char const *s, char c, int i)
+static int	ft_word_length(char const *s, char c, int i)
 {
 	int	j;
 
@@ -54,7 +54,7 @@ static int	ft_word(char const *s, char c, int i)
 	return (j);
 }
 
-static char	**ft_mouka(char const *s, char c, char **str)
+static char	**ft_valide_splt(char const *s, char c, char **str)
 {
 	int		i;
 	int		d;
@@ -71,10 +71,10 @@ static char	**ft_mouka(char const *s, char c, char **str)
 		j = 0;
 		while (s[d] == c)
 			d++;
-		word = ft_word(s, c, d);
+		word = ft_word_length(s, c, d);
 		str[i] = malloc(word + 1);
 		if (str[i] == NULL)
-			return (ft_null(i, str));
+			return (ft_failure_splt(i, str));
 		while (j < word)
 			str[i][j++] = s[d++];
 		str[i++][j] = '\0';
@@ -106,5 +106,5 @@ char	**ft_split(char const *s, char c)
 		return (str);
 	}
 	str = NULL;
-	return (ft_mouka(s, c, str));
+	return (ft_valide_splt(s, c, str));
 }

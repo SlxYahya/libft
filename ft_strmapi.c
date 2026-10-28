@@ -11,16 +11,6 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static size_t	ft_strlen(char const *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*str;
@@ -39,15 +29,4 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	}
 	str[i] = '\0';
 	return (str);
-}
-char	ft_strupp(unsigned int i, char c)
-{
-	if (c >= 97 && c <= 122 && i = 0)
-	c-=32;
-	return (c);
-}
-int	main ()
-{
-	printf("%s", ft_strmapi("wa ya w9",ft_strupp()));
-	return 0;
 }

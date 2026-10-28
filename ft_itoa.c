@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static int	ft_nblen(long n)
+static int	ft_nb_length(long n)
 {
 	int	i;
 
@@ -24,13 +24,13 @@ static int	ft_nblen(long n)
 	return (i);
 }
 
-static char	*ft_negitoa(long nb)
+static char	*ft_negative_nb(long nb)
 {
 	int		i;
 	char	*str;
 
 	nb = -nb;
-	i = ft_nblen(nb);
+	i = ft_nb_length(nb);
 	str = malloc(i + 2);
 	if (str == NULL)
 		return (NULL);
@@ -45,12 +45,12 @@ static char	*ft_negitoa(long nb)
 	return (str);
 }
 
-static char	*ft_whititoa(long nb)
+static char	*ft_positive_nb(long nb)
 {
 	int		i;
 	char	*str;
 
-	i = ft_nblen(nb);
+	i = ft_nb_length(nb);
 	str = malloc(i + 1);
 	if (str == NULL)
 		return (NULL);
@@ -79,7 +79,7 @@ char	*ft_itoa(int n)
 		return (str);
 	}
 	if (nb < 0)
-		return (ft_negitoa(nb));
+		return (ft_negative_nb(nb));
 	else
-		return (ft_whititoa(nb));
+		return (ft_positive_nb(nb));
 }

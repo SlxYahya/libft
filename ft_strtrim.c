@@ -11,17 +11,7 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static size_t	ft_strlen(char const *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-static size_t	ft_findseta(char const *s1, char const *set)
+static size_t	ft_findset_front(char const *s1, char const *set)
 {
 	int		i;
 	int		j;
@@ -48,7 +38,7 @@ static size_t	ft_findseta(char const *s1, char const *set)
 	return (count);
 }
 
-static size_t	ft_findsetb(char const *s1, char const *set)
+static size_t	ft_findset_back(char const *s1, char const *set)
 {
 	int		j;
 	int		i;
@@ -95,11 +85,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (s1 == NULL || set == NULL)
 		return (NULL);
-	if (s1[0] == '\0' || ((int)ft_strlen(s1) - ((int)ft_findseta(s1, set)
-				+ (int)ft_findsetb(s1, set))) < 0)
+	if (s1[0] == '\0' || ((int)ft_strlen(s1) - ((int)ft_findset_front(s1, set)
+				+ (int)ft_findset_back(s1, set))) < 0)
 		return (ft_destempty());
-	i = ft_findseta(s1, set);
-	k = ft_findsetb(s1, set);
+	i = ft_findset_front(s1, set);
+	k = ft_findset_back(s1, set);
 	j = 0;
 	dest = malloc(ft_strlen(s1) - (i + k) + 1);
 	if (dest == NULL)

@@ -11,28 +11,6 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-static int	ft_sign(const char *str)
-{
-	int	i;
-	int	j;
-	int	sign;
-
-	i = 0;
-	j = 0;
-	sign = 1;
-	while (!(str[i] >= '0' && str[i] <= '9') && str[i])
-	{
-		if (str[i] == '-' || str[i] == '+')
-			j++;
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	if (j > 1)
-		return (0);
-	return (sign);
-}
-
 static int	ft_skip(const char *str)
 {
 	int	i;
@@ -40,8 +18,7 @@ static int	ft_skip(const char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '-' || str[i] == '+' || str[i] == 32
-			|| (str[i] >= 9 && str[i] <= 13))
+		if (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 			i++;
 		else
 			break ;
@@ -49,28 +26,45 @@ static int	ft_skip(const char *str)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+static int	ft_int_calculator(const char *str, int i, int sign)
 {
-	int			i;
-	long int	j;
-	int			k;
+	long int	res;
 
-	j = 0;
-	if (str == NULL)
-		return (0);
-	k = ft_sign(str);
-	if (k == 0)
-		return (0);
-	i = ft_skip(str);
+	res = 0;
 	while (str[i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 		{
-			j = j * 10 + (str[i] - '0');
+			if (res > (LONG_MAX - (str[i] - '0')) / 10)
+			{
+				if (sign == 1)
+					return (-1);
+				return (0);
+			}
+			res = res * 10 + (str[i] - '0');
 			i++;
 		}
 		else
-			return (j * k);
+			break ;
 	}
-	return (j * k);
+	return ((int)(res * sign));
+}
+
+int	ft_atoi(const char *str)
+{
+	int			i;
+	int			k;
+
+	k = 1;
+	if (str == NULL)
+		return (0);
+	i = ft_skip(str);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i++] == '-')
+			k *= -1;
+	}
+	if (str[i] == '-' || str[i] == '+')
+		return (0);
+	return (ft_int_calculator(str, i, k));
 }
