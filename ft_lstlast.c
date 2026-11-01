@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yasaber <yasaber@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 17:03:50 by yasaber           #+#    #+#             */
-/*   Updated: 2026/10/20 17:08:51 by yasaber          ###   ########.fr       */
+/*   Updated: 2026/10/30 16:19:57 by yasaber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 t_list	*ft_lstlast(t_list *lst)

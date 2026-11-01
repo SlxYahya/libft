@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yasaber <yasaber@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 10:02:55 by yasaber           #+#    #+#             */
-/*   Updated: 2026/10/23 10:20:27 by yasaber          ###   ########.fr       */
+/*   Updated: 2026/10/30 17:39:26 by yasaber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)

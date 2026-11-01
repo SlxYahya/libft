@@ -3,32 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasaber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yasaber <yasaber@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 10:40:12 by yasaber           #+#    #+#             */
-/*   Updated: 2026/10/24 14:53:41 by yasaber          ###   ########.fr       */
+/*   Updated: 2026/10/30 17:44:26 by yasaber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-static int	ft_countsep(char const *s, char c)
+static int	ft_countwords(char const *s, char c)
 {
 	int	i;
-	int	j;
 	int	w;
 
 	i = 0;
 	w = 0;
-	j = 0;
 	while (s[i])
 	{
 		if (s[i] != c)
+		{
 			w++;
-		if (s[i] == c && i != 0 && s[i + 1] != '\0' && s[i + 1] != c && w != 0)
-			j++;
-		i++;
+			while (s[i] && s[i] != c)
+				i++;
+		}
+		else
+			i++;
 	}
-	return (j);
+	return (w);
 }
 
 static char	**ft_failure_splt(int i, char **str)
@@ -63,10 +65,10 @@ static char	**ft_valide_splt(char const *s, char c, char **str)
 
 	i = 0;
 	d = 0;
-	str = malloc((ft_countsep(s, c) + 2) * sizeof(char *));
+	str = malloc((ft_countwords(s, c) + 1) * sizeof(char *));
 	if (str == NULL)
 		return (NULL);
-	while (i <= ft_countsep(s, c))
+	while (i < ft_countwords(s, c))
 	{
 		j = 0;
 		while (s[d] == c)
@@ -97,7 +99,7 @@ char	**ft_split(char const *s, char c)
 		str[0] = NULL;
 		return (str);
 	}
-	if (ft_countsep(s, c) == 0 && (*s == '\0' || *s == c))
+	if (ft_countwords(s, c) == 0)
 	{
 		str = malloc(sizeof(char *));
 		if (!str)
