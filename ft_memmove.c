@@ -6,7 +6,7 @@
 /*   By: yasaber <yasaber@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/13 10:31:31 by yasaber           #+#    #+#             */
-/*   Updated: 2026/10/30 17:44:54 by yasaber          ###   ########.fr       */
+/*   Updated: 2026/11/03 20:30:50 by yasaber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			((char *) dest)[n - 1] = ((const char *) src)[n - 1];
 			n--;
 		}
-		return (dest);
 	}
+	return (dest);
 }
